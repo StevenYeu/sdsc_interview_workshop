@@ -23,6 +23,49 @@
 - K Top
 ---
 
+# Arrays Algoritms
+
+## Good To Know
+- Binary Search
+- Cyclic Sort
+- Two Poitner
+- Sliding Window
+
+---
+
+# Arrays - Binary Search
+
+If given a sorted a, binary search would be a good chice for the problem
+
+
+## Code
+
+```go
+///import "cmp"
+func BinarySearch[T cmp.Ordered](data []T, target T) int {
+    lo := 0
+    hi := len(data) - 1
+    for lo <= hi {
+        mid := (lo + hi) / 2
+        value := data[mid]
+        if value == target {
+            return mid
+        }
+        if value < target {
+            lo = mid + 1
+        } else {
+            hi = mid - 1
+        }
+    }
+    return -1
+}
+
+```
+---
+# Arrays - Cyclic Sort
+
+
+---
 # Graph Algorithms
 
 ## Most Common 
@@ -36,17 +79,21 @@
 Below is genric search in psudeocode
 
 ```
-SerachGraph(start_node)
-    nodes := {start_node}
+SerachGraph(startNode)
+    nodes := {startNode}
     visited := {}
     while nodes is not empty:
         cur := nodes.getNextNode()
-        add neighbors to nodes
+        processNode(cur)
+        for n in neighbors of cur:
+           add n to nodes
 ```
 
 ### Tree vs Graph Search
 Main differecen between a tree and a graph search is whether
-we keep track of visited nodes
+we keep track of visited nodes. 
+
+In a graph search, keep track of visited nodes
 
 ### Note
 This structure can also be used to implement A* or Dijkstra.
@@ -116,12 +163,106 @@ Return the maximum area of an island in grid. If there is no island, return 0
 ```
 Taken from [LeetCode 695](https://leetcode.com/problems/max-area-of-island/description/)
 
----
 ## Exmple Input
+```python
+///def print_grid_with_borders():
+///    grid = [
+///        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+///        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+///        [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+///        [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+///        [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+///        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+///        [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+///        [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
+///    ]
+///    rows = len(grid)
+///    cols = len(grid[0])
+///
+///    for i in range(rows):
+///        if i == 0:
+///            print("\u250c" + "\u2500" * (4 * cols - 1) + "\u2510")  # Top border
+///        else:
+///            print("\u251c" + "\u2500" * (4 * cols - 1) + "\u2524")  # Middle borders
+///
+///        for j in range(cols):
+///            if grid[i][j] == 1:
+///                print(
+///                    "\u2502 \033[91m1\033[0m", end=" "
+///                )  # Red 1 within vertical border
+///            else:
+///                print(
+///                    "\u2502", grid[i][j], end=" "
+///                )  # Normal value within vertical border
+///        print("\u2502")  # Right vertical border
+///
+///    print("\u2514" + "\u2500" * (4 * cols - 1) + "\u2518")  # Bottom border
+///print_grid_with_borders()
+```
 
-~~~sd replaced processed
-This content will be passed in as stdin and will be replaced.
-~~~
+---
+# Depth First Graph Search Example Continued
+
+## Solution
+```go
+/// package main
+/// import "fmt"
+func maxAreaOfIsland(grid [][]int) int {
+    area := 0
+    for r, row := range grid {
+        for c, value := range row {
+            if value == 1 {
+                area = max(dfs(r, c, &grid), area)
+            }
+        }
+    }
+    return area
+}
+///type Coord struct {
+///    Row int
+///    Col int
+///}
+func dfs(row, col int, grid *[][]int) int {
+    area := 0
+    rows := len(*grid)
+    cols := len((*grid)[0])
+    stack := []Coord{Coord{Row: row, Col: col}}
+    for len(stack) > 0 {
+        n := len(stack) - 1
+        cur := stack[n]
+        stack = stack[:n]
+        r := cur.Row
+        c := cur.Col
+        if r < 0 ||c < 0 || r >= rows || c >= cols {
+            continue
+        }
+        if (*grid)[r][c] == 1 {
+            area += 1
+            (*grid)[r][c] = 0
+            stack = append(stack, Coord{Row: r, Col: c - 1})
+            stack = append(stack, Coord{Row: r, Col: c + 1})
+            stack = append(stack, Coord{Row: r- 1, Col: c})
+            stack = append(stack, Coord{Row: r+ 1, Col: c})
+        }
+    }
+    return area
+}
+
+///func main() {
+///    grid := [][]int{
+///        {0,0,1,0,0,0,0,1,0,0,0,0,0},
+///        {0,0,0,0,0,0,0,1,1,1,0,0,0},
+///        {0,1,1,0,1,0,0,0,0,0,0,0,0},
+///        {0,1,0,0,1,1,0,0,1,0,1,0,0},
+///        {0,1,0,0,1,1,0,0,1,1,1,0,0},
+///        {0,0,0,0,0,0,0,0,0,0,1,0,0},
+///        {0,0,0,0,0,0,0,1,1,1,0,0,0},
+///        {0,0,0,0,0,0,0,1,1,0,0,0,0},
+///    }
+///    fmt.Printf("Max Area is %d\n",maxAreaOfIsland(grid))
+///}
+
+```
 
 ---
 # Breadth First Search Example
