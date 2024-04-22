@@ -211,6 +211,137 @@ func minSubArrayLen(target int, nums []int) int {
 
 ---
 
+# Linked List
+
+Some of the techinques for arrays can be applied to linked lists
+such as the two pointers and sliding window
+
+An example of two pointers for linked list would be reversing a linked list
+
+## Example
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *ListNode) *ListNode {
+    var prev *ListNode
+    cur:= head
+    for cur != nil {
+        next := cur.Next
+        cur.Next = prev
+        prev = cur
+        cur = next
+    }
+   return prev
+}
+
+```
+
+---
+
+# Linked List - Fast/Slow Pointer
+
+Common techinque for solving linked list problem is using a fast and slow pointer.
+
+For example, have one pointer advance one node and a second pointer move
+two nodes
+
+## Applications
+
+- Cycle Dectection
+- Finding Middle of Linked List
+
+---
+
+# Linked List - Fast/Slow Pointer
+
+Common techinque for solving linked list problem is using a fast and slow pointer.
+
+For example, have one pointer advance one node and a second pointer move
+two nodes
+
+## Applications
+
+- Cycle Dectection
+- Finding Middle of Linked List
+
+## Cycle Dectecton Example
+
+```go
+type ListNode struct {
+    Val   int
+    Next  *ListNode
+}
+func hasCycle(head *ListNode) bool {
+    slow, fast := head,head
+    for fast != nil && fast.Next != nil {
+        slow = slow.Next
+        fast = fast.Next.Next
+        if slow == fast {
+            return true
+        }
+    }
+
+    return false
+}
+```
+
+---
+
+# Linked List - Fast/Slow Pointer
+
+Common techinque for solving linked list problem is using a fast and slow pointer.
+
+For example, have one pointer advance one node and a second pointer move
+two nodes
+
+## Applications
+
+- Cycle Dectection
+- Finding Middle of Linked List
+
+## Cycle Dectecton Example
+
+```go
+type ListNode struct {
+    Val   int
+    Next  *ListNode
+}
+func hasCycle(head *ListNode) bool {
+    slow, fast := head,head
+    for fast != nil && fast.Next != nil {
+        slow = slow.Next
+        fast = fast.Next.Next
+        if slow == fast {
+            return true
+        }
+    }
+
+    return false
+}
+```
+
+## Finding Middle of Linked List
+
+```go
+func middleNode(head *ListNode) *ListNode {
+    slow, fast := head,head
+    for fast != nil && fast.Next != nil {
+        slow = slow.Next
+        fast = fast.Next.Next
+    }
+
+    return slow
+}
+```
+
+---
+
 # Tree/Graph Algorithms
 
 ## Most Common
