@@ -682,6 +682,25 @@ impl Trie {
 ```
 
 ---
+# General Interview Tips
+
+## During Interview
+- Practice thinking out loud
+- Remember to commiucate with your interviewer
+    * If you need time to read/think, just tell them
+    * If you're not sure, you can ask them for their input
+    * Get buy in from interview
+    * **Interviewer is there help guide you**
+- Ask clarifying questions
+    * Edges Cases
+    * Clear up assumptions
+    * Error Handling
+
+## End Interview
+- Rememeber that engineers are also people
+    * Generally people like to talk about themselves
+
+---
 
 # System Designs/Distrubted System Topics
 
