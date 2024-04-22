@@ -27,12 +27,16 @@
 
 ---
 
-# Arrays Algorithms
+# Arrays
 
-## Good To Know
+## Properties
+
+- Fast Random Access
+- Congituous in memory
+
+## Algoritms
 
 - Binary Search
-- Cyclic Sort
 - Two Poitner
 - Sliding Window
 
@@ -69,6 +73,64 @@ func BinarySearch[T cmp.Ordered](data []T, target T) int {
 ---
 
 # Arrays - Two Pointers
+
+Basic idea is to use 2 pointers to travese the array. (Also useful in Linked List)
+
+If given a sorted array, this technqiue can be useful.
+
+## Example
+
+### Problem Statmenent
+
+```
+Given a sorted array, create a new array that contains the squares
+of each numebr in sorted order
+
+Ex: [-4, -2, 0, 1, 4]
+Output: [0, 1, 4, 16, 16]
+```
+
+---
+
+# Arrays - Two Pointers
+
+Basic idea is to use 2 pointers to travese the array. (Also useful in Linked List)
+
+If given a sorted array, this technqiue can be useful.
+
+## Example
+
+### Problem Statmenent
+
+```
+Given a sorted array, create a new array that contains the squares
+of each numebr in sorted order
+
+Ex: [-4, -2, 0, 1, 4]
+Output: [0, 1, 4, 16, 16]
+```
+
+### Solution
+
+```go
+func squares(numbers []int) []int {
+    squaredNums := make([]int, len(numbers))
+    left, right := 0, len(numbers) - 1
+    for i := len(numbers) - 1; i >=0; i--   {
+        leftSq := numbers[left] * numbers[left]
+        rightSq := numbers[right] * numbers[right]
+        if rightSq >= leftSq {
+            squaredNums[i] = rightSq
+            right -= 1
+        } else {
+            squaredNums[i] = leftSq
+            left += 1
+        }
+    }
+    return squaredNums
+}
+
+```
 
 ---
 
@@ -369,7 +431,7 @@ root -> p -> i -> k -> a -> c -> h -> u -> (end)
 
 ---
 
-# Trie - Prefix Trees Continued
+# Trie - Prefix Trees 
 
 ## Example Implementation
 
@@ -381,10 +443,7 @@ struct WordDictionary {
 }
 impl WordDictionary {
     fn new() -> Self {
-        return WordDictionary {
-            is_word: false,
-            children: HashMap::new(),
-        };
+        return WordDictionary {is_word: false,children: HashMap::new(),};
     }
     fn add_word(&mut self, word: String) {
         let mut cur = self;
