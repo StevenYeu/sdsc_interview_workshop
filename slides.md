@@ -40,7 +40,7 @@
 
 # Arrays - Binary Search
 
-If given a sorted a, binary search would be a good chice for the problem
+If given a sorted array, binary search would be a good choice for the problem
 
 ## Code
 
@@ -68,11 +68,15 @@ func BinarySearch[T cmp.Ordered](data []T, target T) int {
 
 ---
 
+# Arrays - Two Pointers
+
+---
+
 # Arrays - Sliding Window
 
 ---
 
-# Graph Algorithms
+# Tree/Graph Algorithms
 
 ## Most Common
 
@@ -328,6 +332,18 @@ func BFS(root *lib.TreeNode) {
 ---
 
 # Trie - Prefix Trees
+
+## Structure
+
+Genral strcuture of a trie in psuedocoe
+
+```
+structure Trie[T] {
+ isTerminal: Bool
+ children: HashMap
+ value: T
+}
+```
 
 ## Example
 
