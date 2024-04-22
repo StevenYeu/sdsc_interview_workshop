@@ -19,19 +19,14 @@ type Coord struct {
 }
 
 func GraphDFS(row, col int, grid *[][]int) int {
-
 	area := 0
-	rows := len(*grid)
-	cols := len((*grid)[0])
-
+	rows, cols := len(*grid), len((*grid)[0])
 	stack := []Coord{{Row: row, Col: col}}
-
 	for len(stack) > 0 {
 		n := len(stack) - 1
 		cur := stack[n]
 		stack = stack[:n]
-		r := cur.Row
-		c := cur.Col
+		r, c := cur.Row, cur.Col
 		if r < 0 || c < 0 || r >= rows || c >= cols {
 			continue
 		}
