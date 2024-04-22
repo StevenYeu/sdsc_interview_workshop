@@ -136,6 +136,79 @@ func squares(numbers []int) []int {
 
 # Arrays - Sliding Window
 
+## When to Use
+
+Find or compute something involving subsets/subarrays
+
+## Idea
+
+Use 2 pointers to control the size of the subarray/subset
+Ususally have a start and end pointer
+
+## Problem Statement
+
+```
+Given an array of positive integers nums and a positive integer target,
+return the minimal length of a subarray whose sum is greater than or equal to target.
+If there is no such subarray, return 0 instead.
+
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Input: target = 11, nums = [1,1,1,1,1,1,1,1]
+Output: 0
+```
+
+Taken from [LeetCode 209](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+
+---
+
+# Arrays - Sliding Window
+
+## When to Use
+
+Find or compute something involving subsets/subarrays
+
+## Idea
+
+Use 2 pointers to control the size of the subarray/subset
+Ususally have a start and end pointer
+
+## Problem Statement
+
+```
+Given an array of positive integers nums and a positive integer target,
+return the minimal length of a subarray whose sum is greater than or equal to target.
+If there is no such subarray, return 0 instead.
+
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Input: target = 11, nums = [1,1,1,1,1,1,1,1]
+Output: 0
+```
+
+Taken from [LeetCode 209](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
+
+## Solution
+
+```go
+func minSubArrayLen(target int, nums []int) int {
+    length := len(nums) + 1
+    start, curSum := 0,0
+    for end,num := range nums {
+        curSum += num
+        for curSum >= target {
+            length = min(length, end-start+1)
+            curSum -= nums[start]
+            start += 1
+        }
+    }
+    if length < len(nums) + 1 {
+        return length
+    }
+    return 0
+}
+```
+
 ---
 
 # Tree/Graph Algorithms
@@ -431,19 +504,19 @@ root -> p -> i -> k -> a -> c -> h -> u -> (end)
 
 ---
 
-# Trie - Prefix Trees 
+# Trie - Prefix Trees
 
 ## Example Implementation
 
 ```rust
 ///use std::collections::HashMap;
-struct WordDictionary {
+struct Trie {
     pub is_word: bool,
-    pub children: HashMap<char, WordDictionary>,
+    pub children: HashMap<char, Trie>,
 }
-impl WordDictionary {
+impl Trie {
     fn new() -> Self {
-        return WordDictionary {is_word: false,children: HashMap::new(),};
+        return Trie {is_word: false,children: HashMap::new(),};
     }
     fn add_word(&mut self, word: String) {
         let mut cur = self;
@@ -452,7 +525,7 @@ impl WordDictionary {
             match letter {
                 Some(_) => (),
                 None => {
-                    let node = WordDictionary {
+                    let node = Trie {
                         is_word: false,
                         children: HashMap::new(),
                     };
@@ -476,3 +549,15 @@ impl WordDictionary {
     }
 }
 ```
+
+---
+
+# System Designs/Distrubted System Topics
+
+- ## Load Balancing
+- ## CAP Theorem/Eventual Consistency
+- ## Caching
+- ## Dicussing Trade Offs
+- ## Message Queues/Event Bus
+
+---
