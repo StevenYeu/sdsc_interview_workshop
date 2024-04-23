@@ -8,7 +8,7 @@
 
 # Overview of Data Structures and Techniques
 
-## Data Strcutures
+## Data Structures
 
 - Arrays
 - Hash Tables
@@ -32,12 +32,12 @@
 ## Properties
 
 - Fast Random Access
-- Congituous in memory
+- Contiguous in memory
 
-## Algoritms
+## Algorithms
 
 - Binary Search
-- Two Poitner
+- Two Pointer
 - Sliding Window
 
 ---
@@ -74,13 +74,13 @@ func BinarySearch[T cmp.Ordered](data []T, target T) int {
 
 # Arrays - Two Pointers
 
-Basic idea is to use 2 pointers to travese the array. (Also useful in Linked List)
+Basic idea is to use 2 pointers to traverse the array. (Also useful in Linked List)
 
-If given a sorted array, this technqiue can be useful.
+If given a sorted array, this technique can be useful.
 
 ## Example
 
-### Problem Statmenent
+### Problem Statement
 
 ```
 Given a sorted array, create a new array that contains the squares
@@ -94,13 +94,13 @@ Output: [0, 1, 4, 16, 16]
 
 # Arrays - Two Pointers
 
-Basic idea is to use 2 pointers to travese the array. (Also useful in Linked List)
+Basic idea is to use 2 pointers to traverse the array. (Also useful in Linked List)
 
-If given a sorted array, this technqiue can be useful.
+If given a sorted array, this technique can be useful.
 
 ## Example
 
-### Problem Statmenent
+### Problem Statement
 
 ```
 Given a sorted array, create a new array that contains the squares
@@ -138,12 +138,13 @@ func squares(numbers []int) []int {
 
 ## When to Use
 
-Find or compute something involving subsets/subarrays
+Find or compute something involving subsets/sub-arrays
 
 ## Idea
 
-Use 2 pointers to control the size of the subarray/subset
-Ususally have a start and end pointer
+Use 2 pointers to control the size of the sub-array/subset.
+
+Usually have a start and end pointer.
 
 ## Problem Statement
 
@@ -166,12 +167,13 @@ Taken from [LeetCode 209](https://leetcode.com/problems/minimum-size-subarray-su
 
 ## When to Use
 
-Find or compute something involving subsets/subarrays
+Find or compute something involving subsets/sub-arrays
 
 ## Idea
 
-Use 2 pointers to control the size of the subarray/subset
-Ususally have a start and end pointer
+Use 2 pointers to control the size of the sub-array/subset.
+
+Usually have a start and end pointer.
 
 ## Problem Statement
 
@@ -213,7 +215,7 @@ func minSubArrayLen(target int, nums []int) int {
 
 # Linked List
 
-Some of the techinques for arrays can be applied to linked lists
+Some of the techniques for arrays can be applied to linked lists
 such as the two pointers and sliding window
 
 An example of two pointers for linked list would be reversing a linked list
@@ -246,31 +248,31 @@ func reverseList(head *ListNode) *ListNode {
 
 # Linked List - Fast/Slow Pointer
 
-Common techinque for solving linked list problem is using a fast and slow pointer.
+Common technique for solving linked list problem is using a fast and slow pointer.
 
 For example, have one pointer advance one node and a second pointer move
 two nodes
 
 ## Applications
 
-- Cycle Dectection
+- Cycle Detection
 - Finding Middle of Linked List
 
 ---
 
 # Linked List - Fast/Slow Pointer
 
-Common techinque for solving linked list problem is using a fast and slow pointer.
+Common technique for solving linked list problem is using a fast and slow pointer.
 
 For example, have one pointer advance one node and a second pointer move
 two nodes
 
 ## Applications
 
-- Cycle Dectection
+- Cycle Detection
 - Finding Middle of Linked List
 
-## Cycle Dectecton Example
+## Cycle Detecting Example
 
 ```go
 type ListNode struct {
@@ -295,17 +297,17 @@ func hasCycle(head *ListNode) bool {
 
 # Linked List - Fast/Slow Pointer
 
-Common techinque for solving linked list problem is using a fast and slow pointer.
+Common technique for solving linked list problem is using a fast and slow pointer.
 
 For example, have one pointer advance one node and a second pointer move
 two nodes
 
 ## Applications
 
-- Cycle Dectection
+- Cycle Detection
 - Finding Middle of Linked List
 
-## Cycle Dectecton Example
+## Cycle Detecting Example
 
 ```go
 type ListNode struct {
@@ -346,12 +348,12 @@ func middleNode(head *ListNode) *ListNode {
 
 ## Most Common
 
-- Depth First Serach (DFS)
+- Depth First Search (DFS)
 - Breadth First Search (BFS)
 
 ## Generic Search Algorithm
 
-Below is genric search in psudeocode
+Below is generic search in postcode
 
 ```
 SerachGraph(startNode)
@@ -366,26 +368,26 @@ SerachGraph(startNode)
 
 ### Tree vs Graph Search
 
-Main differecen between a tree and a graph search is whether
+Main difference between a tree and a graph search is whether
 we keep track of visited nodes.
 
 In a graph search, keep track of visited nodes
 
 ### Note
 
-This structure can also be used to implement A\* or Dijkstra.
-Where we can use a proirity queue as the data structure.
+This structure can also be used to implement A* or Dijkstra.
+Where we can use a priority queue as the data structure.
 
-Also note that Dijkstra is a speical case of A\*, where the
-heureistic function is zero (h(x) = 0)
+Also note that Dijkstra is a special case of A*, where the
+heuristic function is zero (h(x) = 0)
 
 ---
 
 # Depth First Search
 
-- Goes down each branch as far as possible before backatracking.
-- Impleted using recusrion or iteratively using a stack.
-- Usefully for find connected componets/disjoint sets in a graph
+- Goes down each branch as far as possible before backtracking.
+- Imploded using recursion or iterative using a stack.
+- Usefully for find connected components/disjoint sets in a graph
 
 Following example is an iterative implementation using a stack.
 
@@ -445,7 +447,7 @@ Return the maximum area of an island in grid. If there is no island, return 0
 
 Taken from [LeetCode 695](https://leetcode.com/problems/max-area-of-island/description/)
 
-## Exmple Input
+## Example Input
 
 ```python
 ///def print_grid_with_borders():
@@ -601,11 +603,11 @@ func BFS(root *lib.TreeNode) {
 
 Useful for string searching.
 
-Ex: Predictive text and Autocomplete
+Ex: Predictive text and Auto-Complete
 
 ## Structure
 
-Genral strcuture of a trie in psuedocoe
+General structure of a trie in pseudocode
 
 ```
 structure Trie[T] {
@@ -691,7 +693,7 @@ impl Trie {
 ## During Interview
 
 - Practice thinking out loud
-- Remember to commiucate with your interviewer
+- Remember to communicate with your interviewer
   - If you need time to read/think, just tell them
   - If you're not sure, you can ask them for their input
   - Get buy in from interview
@@ -703,7 +705,7 @@ impl Trie {
 
 ## End Interview
 
-- Rememeber that engineers are also people
+- Remember that engineers are also people
   - Generally people like to talk about themselves
 
 ---
