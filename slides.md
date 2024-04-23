@@ -599,6 +599,10 @@ func BFS(root *lib.TreeNode) {
 
 # Trie - Prefix Trees
 
+Useful for string searching.
+
+Ex: Predictive text and Autocomplete
+
 ## Structure
 
 Genral strcuture of a trie in psuedocoe
@@ -607,7 +611,6 @@ Genral strcuture of a trie in psuedocoe
 structure Trie[T] {
  isTerminal: Bool
  children: HashMap
- value: T
 }
 ```
 
@@ -682,32 +685,54 @@ impl Trie {
 ```
 
 ---
+
 # General Interview Tips
 
 ## During Interview
+
 - Practice thinking out loud
 - Remember to commiucate with your interviewer
-    * If you need time to read/think, just tell them
-    * If you're not sure, you can ask them for their input
-    * Get buy in from interview
-    * **Interviewer is there help guide you**
+  - If you need time to read/think, just tell them
+  - If you're not sure, you can ask them for their input
+  - Get buy in from interview
+  - **Interviewer is there help guide you**
 - Ask clarifying questions
-    * Edges Cases
-    * Clear up assumptions
-    * Error Handling
+  - Edges Cases
+  - Clear up assumptions
+  - Error Handling
 
 ## End Interview
+
 - Rememeber that engineers are also people
-    * Generally people like to talk about themselves
+  - Generally people like to talk about themselves
 
 ---
 
-# System Designs/Distrubted System Topics
+# System Design Topics
 
-- ## Load Balancing
-- ## CAP Theorem/Eventual Consistency
-- ## Caching
-- ## Dicussing Trade Offs
-- ## Message Queues/Event Bus
+## Load Balancing
+
+    * Consistent Hashing
+    * Sharding
+
+## CAP Theorem/Eventual Consistency
+
+    * High Avialability vs Consistent Data
+
+## Caching
+
+    * In-Memory DBs
+    * CDNs
+    * Browser Cache
+
+## Message Queues
+
+    * RabbitMQ
+    * Apache Kafka & MQ
+    * Amazon MQ
 
 ---
+
+# Link to slides
+
+https://github.com/StevenYeu/sdsc_interview_workshop
