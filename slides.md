@@ -12,10 +12,10 @@
 
 - Arrays
 - Hash Tables
+- Linked List
 - Trees/Graphs
 - Trie
-- Linked List
-- Heap
+<!-- - Heap -->
 
 ## Techniques/Algorithms
 
@@ -23,6 +23,7 @@
 - Sliding Window
 - Slow/Fast Pointer
 - Binary Search
+- Graphs Search/Tree Traversal
 <!-- - K Top -->
 
 ---
